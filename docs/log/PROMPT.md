@@ -121,3 +121,6 @@ ok 고생했어. 추가적으로 @docs/reports/code-review-service-extraction.md
 ```
 /smart-commit - 모든 보고서 파일에서 경로를 맞게 확인하고 있는지 한번 봐줘
 ```
+```
+현재 해당 코드에 비밀번호 평문 저장/비교 중인거 같애. 수정안 제시해줘
+```
