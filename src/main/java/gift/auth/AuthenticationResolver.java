@@ -1,7 +1,7 @@
 package gift.auth;
 
-import gift.member.Member;
-import gift.member.MemberRepository;
+import gift.model.Member;
+import gift.repository.MemberRepository;
 import org.springframework.stereotype.Component;
 
 /**

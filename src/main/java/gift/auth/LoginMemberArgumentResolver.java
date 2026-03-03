@@ -1,6 +1,7 @@
 package gift.auth;
 
-import gift.member.Member;
+import gift.exception.UnauthorizedException;
+import gift.model.Member;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
