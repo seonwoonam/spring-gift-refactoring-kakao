@@ -124,3 +124,18 @@ ok 고생했어. 추가적으로 @docs/reports/code-review-service-extraction.md
 ```
 현재 해당 코드에 비밀번호 평문 저장/비교 중인거 같애. 수정안 제시해줘
 ```
+```
+지금은 service 단에서 encode하고 넘겨주잖아. 근데 Member 클래스 안에서 받아서 password를 인코딩 하는 방법도 있을거 같아. 이런 방법들을 결정하는 기준이 무엇일까?
+```
+```
+도메인 모델은 언제나 다른것을 의존하고 있으면 안되는거야?
+```
+```
+그리고 현재 member라는 객체에서 password를 꺼내서 직접 비교하고 있는데, Password같은 일급 객체를 만들어서 책임을 위임해보는것도 좋을 것 같다는 생각이 드네요. -> 이런 피드백을 봤는데, 일급 객체로 썼을 경우 좋은점이 뭐야 ?
+```
+```
+그러면 객체가 의존하는 형태가 Member -> Password -> PasswordEncoder 아니야?
+```
+```
+Password 일급 객체 도입 트레이드오프 문서 작성 — BCrypt 해싱 적용 이후 피드백에 대해 3가지 방식(String 현재, Password+PasswordEncoder, Password 값 래퍼) 비교 분석 문서를 작성해줘
+```
