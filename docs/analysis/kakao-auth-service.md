@@ -6,14 +6,14 @@
 
 - 설명: KakaoAuthController.callback()에 직접 구현된 Kakao OAuth2 콜백 흐름(토큰 요청 → 사용자 정보 조회 → 회원 자동 등록/조회 → kakaoAccessToken 저장 → JWT 발급)을 KakaoAuthService로 추출. login() 메서드의 인가 URL 생성 로직도 함께 분석.
 - 관련 파일:
-  - `src/main/java/gift/auth/KakaoAuthController.java` (REST API — 4개 의존성)
-  - `src/main/java/gift/auth/KakaoLoginClient.java` (카카오 API 호출 클라이언트)
-  - `src/main/java/gift/auth/KakaoLoginProperties.java` (카카오 OAuth 설정값)
-  - `src/main/java/gift/auth/AuthService.java` (기존 인증 서비스 — 3-1에서 추출 완료)
+  - `src/main/java/gift/controller/KakaoAuthController.java` (REST API — 4개 의존성)
+  - `src/main/java/gift/client/KakaoLoginClient.java` (카카오 API 호출 클라이언트)
+  - `src/main/java/gift/config/KakaoLoginProperties.java` (카카오 OAuth 설정값)
+  - `src/main/java/gift/service/AuthService.java` (기존 인증 서비스 — 3-1에서 추출 완료)
   - `src/main/java/gift/auth/JwtProvider.java` (JWT 토큰 생성/검증)
-  - `src/main/java/gift/auth/TokenResponse.java` (JWT 응답 DTO)
-  - `src/main/java/gift/member/Member.java` (updateKakaoAccessToken, getKakaoAccessToken)
-  - `src/main/java/gift/member/MemberRepository.java` (회원 조회/저장)
+  - `src/main/java/gift/dto/TokenResponse.java` (JWT 응답 DTO)
+  - `src/main/java/gift/model/Member.java` (updateKakaoAccessToken, getKakaoAccessToken)
+  - `src/main/java/gift/repository/MemberRepository.java` (회원 조회/저장)
 
 ## 1. 대상 코드 현황
 
@@ -125,7 +125,7 @@ KakaoAuthController의 callback() 로직은 기존 AuthService의 register()/log
 ### 추가 분석: 테스트 파일
 
 - `KakaoAuthControllerTest`가 존재하지 않음
-- `MemberTest`에 `updateKakaoAccessToken` 테스트가 존재 (src/test/java/gift/member/MemberTest.java:161)
+- `MemberTest`에 `updateKakaoAccessToken` 테스트가 존재 (src/test/java/gift/model/MemberTest.java:161)
 
 ## 5. 최종 판단
 
@@ -139,7 +139,7 @@ KakaoAuthController의 callback() 로직은 기존 AuthService의 register()/log
 
 ## 6. 권장 작업 순서
 
-1. `KakaoAuthService` 클래스 생성 (`src/main/java/gift/auth/KakaoAuthService.java`)
+1. `KakaoAuthService` 클래스 생성 (`src/main/java/gift/service/KakaoAuthService.java`)
    - `@Service` 어노테이션
    - `KakaoLoginClient`, `KakaoLoginProperties`, `MemberRepository`, `JwtProvider` 주입
    - `buildLoginUrl()`: 인가 URL 생성 (KakaoLoginProperties 사용)

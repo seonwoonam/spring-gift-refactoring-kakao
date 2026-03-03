@@ -6,9 +6,9 @@
 
 - 설명: MemberController의 구현 의도를 분석하고, 비즈니스 로직이 Controller에 직접 구현된 현재 구조의 삭제/리팩토링 가능성을 판단
 - 관련 파일:
-  - `src/main/java/gift/member/MemberController.java`
-  - `src/main/java/gift/member/AdminMemberController.java`
-  - `src/test/java/gift/member/MemberControllerTest.java`
+  - `src/main/java/gift/controller/MemberController.java`
+  - `src/main/java/gift/controller/AdminMemberController.java`
+  - `src/test/java/gift/controller/MemberControllerTest.java`
 
 ## 1. 대상 코드 현황
 

@@ -98,6 +98,9 @@ OrderController  → OrderService  → OptionService, MemberRepository, OrderRep
 /analyze-before-refactoring KakaoAuthService 추출
 ```
 ```
+@.claude/persona/REVIEWER.md git commit 로그 및 전체 코드를 분석해서 수정된 작업이 목적에 맞게 잘 수정했는지 리뷰해줘
+```
+```
 지금 보고서들이 docs 폴더 안에도 너무 복잡하게 존재하는데, 분석 보고서와 작업 보고서를 나눠서 정리해줄 수 있을까 ?? 보고서들이 너무 많아서 복잡해. 추가적으로 이름도 마음에 안들어서, 통일된 규칙을 가지도록 이름도 바꿔줘
 ```
 ```
@@ -105,4 +108,16 @@ OrderController  → OrderService  → OptionService, MemberRepository, OrderRep
 ```
 ```
 ok 이제 리팩토링이 다 끝났는데, 기존의 테스트들이 전부 통과해야될거 아냐 ?? 그러면 테스트를 한번 실행시켜볼래 ? 너가 일을 잘 했는지 검증할 수 있는 순간이야.
+```
+```
+우리 프로젝트의 코드가 지금 도메인별로 패키지가 구성되어 있는데, 우리가 생각했을 때에는 도메인별로 구분한다기 보다, serice별로, controller별로 등 역할별로 패키지를 만드는 것이 더 낫다고 생각해. 그래서 해당 구조로 디렉토리 구조를 바꿔줄 수 있을까 ?? 변경하고 변경 내역을 report에 md로 남겨줘
+```
+```
+ok 고생했어. 추가적으로 @docs/reports/code-review-service-extraction.md 이거를 보니까 2번은 지금 수정할만 것 같은데, 2번을 수정해줄 수 있을까? 추가적으로 해당 md 파일도 바뀐 프로젝트 구조에 맞게 파일의 이름, 구조 등을 변경해줘
+```
+```
+지금 docs들을 보면 예전에 만든 것들이라서 경로가 예전방식으로 되어있을 것으로 예상되고, 실제로 그래. 그러면 프로젝트의 모든 md 파일들을 보고 바뀐 프로젝트 구조에 맞게 경로를 수정해줄 수 있을까 ?
+```
+```
+/smart-commit - 모든 보고서 파일에서 경로를 맞게 확인하고 있는지 한번 봐줘
 ```

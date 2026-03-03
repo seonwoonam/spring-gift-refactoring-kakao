@@ -12,8 +12,8 @@ README.md 3-1항에 따라, MemberController와 AdminMemberController에 직접 
 
 | 파일 | 설명 |
 |------|------|
-| `src/main/java/gift/auth/AuthService.java` | 인증 서비스. `register()`, `login()` 메서드 제공. 이메일 중복 확인, 비밀번호 검증, JWT 발급 로직 담당. |
-| `src/main/java/gift/member/MemberService.java` | 회원 관리 서비스. `findAll()`, `findById()`, `create()`, `update()`, `chargePoint()`, `delete()` 메서드 제공. |
+| `src/main/java/gift/service/AuthService.java` | 인증 서비스. `register()`, `login()` 메서드 제공. 이메일 중복 확인, 비밀번호 검증, JWT 발급 로직 담당. |
+| `src/main/java/gift/service/MemberService.java` | 회원 관리 서비스. `findAll()`, `findById()`, `create()`, `update()`, `chargePoint()`, `delete()` 메서드 제공. |
 
 ### 수정된 파일
 
@@ -37,7 +37,7 @@ AdminMemberController (Admin Thymeleaf)
 ## 적용된 규칙
 
 - 구조 변경만 수행 (작동 변경 없음). 기존 API 동작, 에러 메시지, HTTP 상태 코드 모두 동일하게 유지.
-- `docs/removal-analysis-member-controller.md` 분석 보고서의 권장 작업 순서를 따름.
+- `docs/analysis/member-controller.md` 분석 보고서의 권장 작업 순서를 따름.
 - 리팩토링 후 `./gradlew clean build`로 전체 테스트 통과 확인.
 
 ## 참고 사항

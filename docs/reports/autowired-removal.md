@@ -17,8 +17,8 @@
 |------|-----------|
 | `src/main/java/gift/auth/JwtProvider.java` | `@Autowired` 어노테이션 + import 제거 |
 | `src/main/java/gift/auth/AuthenticationResolver.java` | `@Autowired` 어노테이션 + import 제거 |
-| `src/main/java/gift/member/MemberController.java` | `@Autowired` 어노테이션 + import 제거 |
-| `src/main/java/gift/member/AdminMemberController.java` | `@Autowired` 어노테이션 + import 제거 |
+| `src/main/java/gift/controller/MemberController.java` | `@Autowired` 어노테이션 + import 제거 |
+| `src/main/java/gift/controller/AdminMemberController.java` | `@Autowired` 어노테이션 + import 제거 |
 
 ### 주요 변경 내용
 
@@ -44,5 +44,5 @@
 
 ## 참고 사항
 
-- 사전 분석 보고서: `docs/reports/removal-analysis-unused-autowired.md`
+- 사전 분석 보고서: `docs/analysis/autowired.md`
 - 프로젝트 내 나머지 9개 Spring Bean은 이미 `@Autowired` 없이 동작하고 있었으므로, 이번 작업으로 프로젝트 전체의 DI 스타일이 통일됨

@@ -19,18 +19,18 @@ README.md 3-5 항목에 따라 `WishController`에 직접 구현된 비즈니스
 |------|------|
 | `gift/auth/LoginMember.java` | `@LoginMember` 커스텀 어노테이션 (파라미터용) |
 | `gift/auth/LoginMemberArgumentResolver.java` | `@LoginMember Member member` 파라미터를 Authorization 헤더로부터 해석 |
-| `gift/auth/UnauthorizedException.java` | 인증 실패 시 401 응답을 위한 예외 |
-| `gift/auth/ForbiddenException.java` | 권한 부족 시 403 응답을 위한 예외 |
-| `gift/common/WebConfig.java` | `WebMvcConfigurer` — ArgumentResolver 등록 |
-| `gift/wish/WishService.java` | 위시리스트 비즈니스 로직 (CRUD + 소유권 검증) |
+| `gift/exception/UnauthorizedException.java` | 인증 실패 시 401 응답을 위한 예외 |
+| `gift/exception/ForbiddenException.java` | 권한 부족 시 403 응답을 위한 예외 |
+| `gift/config/WebConfig.java` | `WebMvcConfigurer` — ArgumentResolver 등록 |
+| `gift/service/WishService.java` | 위시리스트 비즈니스 로직 (CRUD + 소유권 검증) |
 
 ### 수정 파일 (3개)
 
 | 파일 | 변경 내용 |
 |------|-----------|
-| `gift/common/GlobalExceptionHandler.java` | `UnauthorizedException` → 401, `ForbiddenException` → 403 핸들러 추가 |
-| `gift/wish/WishController.java` | `WishRepository`, `ProductRepository`, `AuthenticationResolver` 의존 → `WishService` 단일 의존으로 변경. `@RequestHeader("Authorization")` → `@LoginMember Member member`로 변경 |
-| `gift/order/OrderController.java` | `AuthenticationResolver` + `WishRepository` 의존 제거. `@RequestHeader("Authorization")` → `@LoginMember Member member`로 변경 (2곳) |
+| `gift/exception/GlobalExceptionHandler.java` | `UnauthorizedException` → 401, `ForbiddenException` → 403 핸들러 추가 |
+| `gift/controller/WishController.java` | `WishRepository`, `ProductRepository`, `AuthenticationResolver` 의존 → `WishService` 단일 의존으로 변경. `@RequestHeader("Authorization")` → `@LoginMember Member member`로 변경 |
+| `gift/controller/OrderController.java` | `AuthenticationResolver` + `WishRepository` 의존 제거. `@RequestHeader("Authorization")` → `@LoginMember Member member`로 변경 (2곳) |
 
 ## WishService 메서드 구성
 

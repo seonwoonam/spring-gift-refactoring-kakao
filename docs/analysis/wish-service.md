@@ -6,14 +6,14 @@
 
 - 설명: WishController에 직접 구현된 위시리스트 CRUD + 인증 확인 + 상품 존재 검증 + 중복 확인 + 소유권 검증 비즈니스 로직을 WishService로 추출. 인증 보일러플레이트(`extractMember` + null 체크)가 매 메서드마다 반복되는 문제도 함께 분석.
 - 관련 파일:
-  - `src/main/java/gift/wish/WishController.java` (REST API — 3개 의존성)
-  - `src/main/java/gift/wish/Wish.java` (엔티티)
-  - `src/main/java/gift/wish/WishRepository.java`
-  - `src/main/java/gift/wish/WishRequest.java`
-  - `src/main/java/gift/wish/WishResponse.java`
-  - `src/main/java/gift/product/ProductRepository.java` (상품 존재 검증에 사용)
+  - `src/main/java/gift/controller/WishController.java` (REST API — 3개 의존성)
+  - `src/main/java/gift/model/Wish.java` (엔티티)
+  - `src/main/java/gift/repository/WishRepository.java`
+  - `src/main/java/gift/dto/WishRequest.java`
+  - `src/main/java/gift/dto/WishResponse.java`
+  - `src/main/java/gift/repository/ProductRepository.java` (상품 존재 검증에 사용)
   - `src/main/java/gift/auth/AuthenticationResolver.java` (인증 처리)
-  - `src/main/java/gift/order/OrderController.java` (WishRepository 주입 — 미사용)
+  - `src/main/java/gift/controller/OrderController.java` (WishRepository 주입 — 미사용)
 
 ## 1. 대상 코드 현황
 
@@ -132,7 +132,7 @@ OrderService 분석 보고서에서 발견한 "cleanup wish" 미구현 이슈가
 
 ## 6. 권장 작업 순서
 
-1. `WishService` 클래스 생성 (`src/main/java/gift/wish/WishService.java`)
+1. `WishService` 클래스 생성 (`src/main/java/gift/service/WishService.java`)
    - `@Service` 어노테이션
    - `WishRepository`, `ProductRepository` (또는 ProductService) 주입
    - `findByMemberId(Long memberId, Pageable pageable)`: 위시 목록 조회

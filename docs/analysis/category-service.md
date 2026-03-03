@@ -6,10 +6,10 @@
 
 - 설명: CategoryController에 직접 구현된 CRUD 비즈니스 로직을 CategoryService로 추출. 또한 ProductController, AdminProductController에서 CategoryRepository를 직접 사용하는 카테고리 조회 로직도 함께 분석.
 - 관련 파일:
-  - `src/main/java/gift/category/CategoryController.java`
-  - `src/main/java/gift/category/CategoryRepository.java`
-  - `src/main/java/gift/product/ProductController.java`
-  - `src/main/java/gift/product/AdminProductController.java`
+  - `src/main/java/gift/controller/CategoryController.java`
+  - `src/main/java/gift/repository/CategoryRepository.java`
+  - `src/main/java/gift/controller/ProductController.java`
+  - `src/main/java/gift/controller/AdminProductController.java`
 
 ## 1. 대상 코드 현황
 
@@ -84,7 +84,7 @@ category 패키지 전체와 ProductController, AdminProductController의 카테
 
 ## 6. 권장 작업 순서
 
-1. `CategoryService` 클래스 생성 (`src/main/java/gift/category/CategoryService.java`)
+1. `CategoryService` 클래스 생성 (`src/main/java/gift/service/CategoryService.java`)
    - `@Service` 어노테이션
    - `CategoryRepository` 주입
    - `findAll()`, `create()`, `findById()`, `update()`, `delete()` 메서드 구현

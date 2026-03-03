@@ -6,16 +6,16 @@
 
 - 설명: OrderController에 직접 구현된 주문 생성 흐름(옵션 조회 → 재고 차감 → 포인트 차감 → 주문 저장 → 카카오 알림 발송)을 OrderService로 추출. 프로젝트에서 가장 복잡한 Controller 메서드이며, 6개의 Repository/Client에 의존하고 있음.
 - 관련 파일:
-  - `src/main/java/gift/order/OrderController.java` (REST API — 6개 의존성)
-  - `src/main/java/gift/order/Order.java` (엔티티)
-  - `src/main/java/gift/order/OrderRepository.java`
-  - `src/main/java/gift/order/OrderRequest.java`
-  - `src/main/java/gift/order/OrderResponse.java`
-  - `src/main/java/gift/order/KakaoMessageClient.java` (카카오 알림 전송)
-  - `src/main/java/gift/option/OptionRepository.java` (재고 차감에 사용)
-  - `src/main/java/gift/member/MemberRepository.java` (포인트 차감에 사용)
-  - `src/main/java/gift/member/Member.java` (deductPoint 메서드)
-  - `src/main/java/gift/wish/WishRepository.java` (주입되었으나 미사용)
+  - `src/main/java/gift/controller/OrderController.java` (REST API — 6개 의존성)
+  - `src/main/java/gift/model/Order.java` (엔티티)
+  - `src/main/java/gift/repository/OrderRepository.java`
+  - `src/main/java/gift/dto/OrderRequest.java`
+  - `src/main/java/gift/dto/OrderResponse.java`
+  - `src/main/java/gift/client/KakaoMessageClient.java` (카카오 알림 전송)
+  - `src/main/java/gift/repository/OptionRepository.java` (재고 차감에 사용)
+  - `src/main/java/gift/repository/MemberRepository.java` (포인트 차감에 사용)
+  - `src/main/java/gift/model/Member.java` (deductPoint 메서드)
+  - `src/main/java/gift/repository/WishRepository.java` (주입되었으나 미사용)
   - `src/main/java/gift/auth/AuthenticationResolver.java` (인증 처리)
 
 ## 1. 대상 코드 현황
@@ -156,7 +156,7 @@ README.md 3-6에서는 두 가지를 제안합니다:
 
 ## 6. 권장 작업 순서
 
-1. `OrderService` 클래스 생성 (`src/main/java/gift/order/OrderService.java`)
+1. `OrderService` 클래스 생성 (`src/main/java/gift/service/OrderService.java`)
    - `@Service`, `@Transactional` 어노테이션
    - `OrderRepository`, `OptionRepository`, `MemberRepository`, `KakaoMessageClient` 주입
    - `findByMemberId(Long memberId, Pageable pageable)`: 주문 목록 조회

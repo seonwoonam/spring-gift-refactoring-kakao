@@ -36,11 +36,11 @@
 
 ### 새로 생성한 파일
 
-**`src/main/java/gift/common/ErrorResponse.java`**
+**`src/main/java/gift/dto/ErrorResponse.java`**
 - 에러 응답 DTO (`record`). `message` 필드 하나를 가진다.
 - 기존: 에러 응답이 `String`으로 반환됨 → 이후: `{"message": "..."}` JSON 구조로 통일
 
-**`src/main/java/gift/common/GlobalExceptionHandler.java`**
+**`src/main/java/gift/exception/GlobalExceptionHandler.java`**
 - `@RestControllerAdvice`로 전역 예외 처리
 - `IllegalArgumentException` → 400 Bad Request + `ErrorResponse`
 - `NoSuchElementException` → 404 Not Found + `ErrorResponse`

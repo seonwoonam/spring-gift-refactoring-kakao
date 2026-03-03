@@ -11,16 +11,16 @@ OrderService가 재고 차감을 위해 OptionService에 의존하므로, Option
 
 | 파일 | 역할 |
 |------|------|
-| `src/main/java/gift/option/OptionService.java` | 옵션 CRUD + 재고 차감 비즈니스 로직 |
-| `src/main/java/gift/order/KakaoNotificationService.java` | 카카오 알림 전송 (best-effort) |
-| `src/main/java/gift/order/OrderService.java` | 주문 생성 + 조회 비즈니스 로직 |
+| `src/main/java/gift/service/OptionService.java` | 옵션 CRUD + 재고 차감 비즈니스 로직 |
+| `src/main/java/gift/service/KakaoNotificationService.java` | 카카오 알림 전송 (best-effort) |
+| `src/main/java/gift/service/OrderService.java` | 주문 생성 + 조회 비즈니스 로직 |
 
 ### 수정 파일 (2개)
 
 | 파일 | 변경 내용 |
 |------|-----------|
-| `src/main/java/gift/option/OptionController.java` | `OptionRepository` + `ProductRepository` → `OptionService` 단일 의존, `validateName()` 제거 |
-| `src/main/java/gift/order/OrderController.java` | `OrderRepository` + `OptionRepository` + `MemberRepository` + `KakaoMessageClient` → `OrderService` 단일 의존, `sendKakaoMessageIfPossible()` 제거 |
+| `src/main/java/gift/controller/OptionController.java` | `OptionRepository` + `ProductRepository` → `OptionService` 단일 의존, `validateName()` 제거 |
+| `src/main/java/gift/controller/OrderController.java` | `OrderRepository` + `OptionRepository` + `MemberRepository` + `KakaoMessageClient` → `OrderService` 단일 의존, `sendKakaoMessageIfPossible()` 제거 |
 
 ### 의존 체인
 

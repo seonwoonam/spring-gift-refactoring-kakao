@@ -8,9 +8,9 @@
 - 관련 파일:
   - `src/main/java/gift/product/ProductNameValidator.java`
   - `src/main/java/gift/option/OptionNameValidator.java`
-  - `src/main/java/gift/product/ProductController.java` (82-87행)
-  - `src/main/java/gift/option/OptionController.java` (87-92행)
-  - `src/main/java/gift/product/AdminProductController.java` (47, 80행)
+  - `src/main/java/gift/controller/ProductController.java` (82-87행)
+  - `src/main/java/gift/controller/OptionController.java` (87-92행)
+  - `src/main/java/gift/controller/AdminProductController.java` (47, 80행)
   - `src/test/java/gift/product/ProductNameValidatorTest.java`
   - `src/test/java/gift/option/OptionNameValidatorTest.java`
 

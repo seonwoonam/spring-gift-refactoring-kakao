@@ -12,13 +12,13 @@ README.md 3-7에 해당하는 작업. KakaoAuthController에 직접 구현된 Ka
 
 | 파일 | 역할 |
 |------|------|
-| `src/main/java/gift/auth/KakaoAuthService.java` | 카카오 OAuth2 인가 URL 생성 + 콜백 처리 (토큰 교환 → 회원 등록/조회 → JWT 발급) |
+| `src/main/java/gift/service/KakaoAuthService.java` | 카카오 OAuth2 인가 URL 생성 + 콜백 처리 (토큰 교환 → 회원 등록/조회 → JWT 발급) |
 
 ### 수정 파일 (1개)
 
 | 파일 | 변경 내용 |
 |------|-----------|
-| `src/main/java/gift/auth/KakaoAuthController.java` | `KakaoLoginProperties` + `KakaoLoginClient` + `MemberRepository` + `JwtProvider` → `KakaoAuthService` 단일 의존. 블록 주석은 Service로 이동. |
+| `src/main/java/gift/controller/KakaoAuthController.java` | `KakaoLoginProperties` + `KakaoLoginClient` + `MemberRepository` + `JwtProvider` → `KakaoAuthService` 단일 의존. 블록 주석은 Service로 이동. |
 
 ### 의존 체인
 

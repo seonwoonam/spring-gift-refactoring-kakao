@@ -8,8 +8,8 @@
 - 관련 파일:
   - `src/main/java/gift/auth/JwtProvider.java`
   - `src/main/java/gift/auth/AuthenticationResolver.java`
-  - `src/main/java/gift/member/MemberController.java`
-  - `src/main/java/gift/member/AdminMemberController.java`
+  - `src/main/java/gift/controller/MemberController.java`
+  - `src/main/java/gift/controller/AdminMemberController.java`
 
 ## 1. 대상 코드 현황
 
