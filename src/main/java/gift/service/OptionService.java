@@ -11,6 +11,11 @@ import java.util.NoSuchElementException;
 
 @Service
 public class OptionService {
+    private static final NameValidator NAME_VALIDATOR = NameValidator.of("Option name",
+        NameValidator.maxLength(50),
+        NameValidator.allowedCharacters()
+    );
+
     private final OptionRepository optionRepository;
     private final ProductService productService;
 
@@ -62,7 +67,7 @@ public class OptionService {
     }
 
     private void validateName(String name) {
-        List<String> errors = NameValidator.validate(name, "Option name", 50);
+        List<String> errors = NAME_VALIDATOR.validate(name);
         if (!errors.isEmpty()) {
             throw new IllegalArgumentException(String.join(", ", errors));
         }
