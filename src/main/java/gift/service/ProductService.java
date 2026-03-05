@@ -27,7 +27,10 @@ public class ProductService {
         this.categoryService = categoryService;
     }
 
-    public Page<Product> findAll(Pageable pageable) {
+    public Page<Product> findAll(Long categoryId, Pageable pageable) {
+        if (categoryId != null) {
+            return productRepository.findByCategoryId(categoryId, pageable);
+        }
         return productRepository.findAll(pageable);
     }
 
