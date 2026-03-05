@@ -24,6 +24,10 @@ public class WishService {
         return wishRepository.findByMemberId(memberId, pageable);
     }
 
+    public boolean existsByMemberIdAndProductId(Long memberId, Long productId) {
+        return wishRepository.findByMemberIdAndProductId(memberId, productId).isPresent();
+    }
+
     public Wish addWish(Long memberId, Long productId) {
         return wishRepository.findByMemberIdAndProductId(memberId, productId)
             .orElseGet(() -> {
