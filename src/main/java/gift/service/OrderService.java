@@ -27,10 +27,12 @@ public class OrderService {
         this.kakaoNotificationService = kakaoNotificationService;
     }
 
+    @Transactional(readOnly = true)
     public Page<Order> findByMemberId(Long memberId, Pageable pageable) {
         return orderRepository.findByMemberId(memberId, pageable);
     }
 
+    @Transactional
     public Order createOrder(Member member, Long optionId, int quantity, String message) {
         // subtract stock
         Option option = optionService.subtractQuantity(optionId, quantity);

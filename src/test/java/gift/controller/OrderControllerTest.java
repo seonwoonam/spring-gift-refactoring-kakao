@@ -168,6 +168,30 @@ class OrderControllerTest {
     }
 
     @Test
+    @DisplayName("POST /api/orders - 포인트 부족 시 주문 실패하면 재고가 원래대로 유지된다")
+    void createOrderInsufficientPoints_stockRemainsUnchanged() throws Exception {
+        var poorMember = new Member("poor-stock@example.com", "password");
+        poorMember.chargePoint(100);
+        poorMember = memberRepository.save(poorMember);
+        var poorToken = jwtProvider.createToken(poorMember.getEmail());
+
+        int originalStock = option.getQuantity();
+
+        var request = new OrderRequest(option.getId(), 1, null);
+
+        mockMvc.perform(post("/api/orders")
+                .header("Authorization", "Bearer " + poorToken)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+            .andExpect(status().isBadRequest());
+
+        entityManager.clear();
+
+        var updatedOption = optionRepository.findById(option.getId()).orElseThrow();
+        assertThat(updatedOption.getQuantity()).isEqualTo(originalStock);
+    }
+
+    @Test
     @DisplayName("GET /api/orders - 내 주문 목록을 조회한다")
     void getOrders() throws Exception {
         orderRepository.save(new Order(option, member.getId(), 1, "테스트 주문"));
