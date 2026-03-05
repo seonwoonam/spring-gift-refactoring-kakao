@@ -32,6 +32,10 @@ public class WishService {
             });
     }
 
+    public void removeByMemberIdAndProductId(Long memberId, Long productId) {
+        wishRepository.deleteByMemberIdAndProductId(memberId, productId);
+    }
+
     public void removeWish(Long memberId, Long wishId) {
         Wish wish = wishRepository.findById(wishId)
             .orElseThrow(() -> new NoSuchElementException("Wish not found. id=" + wishId));
