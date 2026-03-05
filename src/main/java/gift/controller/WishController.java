@@ -43,11 +43,6 @@ public class WishController {
         @LoginMember Member member,
         @Valid @RequestBody WishRequest request
     ) {
-        var existing = wishService.findByMemberIdAndProductId(member.getId(), request.productId());
-        if (existing.isPresent()) {
-            return ResponseEntity.ok(WishResponse.from(existing.get()));
-        }
-
         Wish wish = wishService.addWish(member.getId(), request.productId());
         return ResponseEntity.created(URI.create("/api/wishes/" + wish.getId()))
             .body(WishResponse.from(wish));

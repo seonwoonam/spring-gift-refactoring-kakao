@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 public class WishService {
@@ -25,13 +24,12 @@ public class WishService {
         return wishRepository.findByMemberId(memberId, pageable);
     }
 
-    public Optional<Wish> findByMemberIdAndProductId(Long memberId, Long productId) {
-        return wishRepository.findByMemberIdAndProductId(memberId, productId);
-    }
-
     public Wish addWish(Long memberId, Long productId) {
-        Product product = productService.findById(productId);
-        return wishRepository.save(new Wish(memberId, product));
+        return wishRepository.findByMemberIdAndProductId(memberId, productId)
+            .orElseGet(() -> {
+                Product product = productService.findById(productId);
+                return wishRepository.save(new Wish(memberId, product));
+            });
     }
 
     public void removeWish(Long memberId, Long wishId) {

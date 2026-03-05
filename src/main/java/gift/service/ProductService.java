@@ -13,6 +13,12 @@ import java.util.NoSuchElementException;
 
 @Service
 public class ProductService {
+    private static final NameValidator NAME_VALIDATOR = NameValidator.of("Product name",
+        NameValidator.maxLength(15),
+        NameValidator.allowedCharacters(),
+        NameValidator.noKakao()
+    );
+
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
 
@@ -53,7 +59,7 @@ public class ProductService {
     }
 
     private void validateName(String name) {
-        List<String> errors = NameValidator.validate(name, "Product name", 15, true);
+        List<String> errors = NAME_VALIDATOR.validate(name);
         if (!errors.isEmpty()) {
             throw new IllegalArgumentException(String.join(", ", errors));
         }
