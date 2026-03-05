@@ -44,13 +44,13 @@ public class ProductService {
     }
 
     public Product create(String name, int price, String imageUrl, Long categoryId) {
-        validateName(name);
+        NAME_VALIDATOR.validateOrThrow(name);
         Category category = categoryService.findById(categoryId);
         return productRepository.save(new Product(name, price, imageUrl, category));
     }
 
     public Product update(Long id, String name, int price, String imageUrl, Long categoryId) {
-        validateName(name);
+        NAME_VALIDATOR.validateOrThrow(name);
         Category category = categoryService.findById(categoryId);
         Product product = findById(id);
         product.update(name, price, imageUrl, category);
@@ -61,10 +61,4 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    private void validateName(String name) {
-        List<String> errors = NAME_VALIDATOR.validate(name);
-        if (!errors.isEmpty()) {
-            throw new IllegalArgumentException(String.join(", ", errors));
-        }
-    }
 }
